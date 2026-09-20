@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treinos — ShapeHouse</title>
+<meta name="description" content="Treino personalizado no estilo PPL e treino TAF progressivo para o teste de aptidão física.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">Shape<span class="dot">House</span></a>
+  <nav class="nav-links">
+    <a href="index.html">Início</a>
+    <a href="dieta.html">Dieta</a>
+    <a href="treino.html">Treinos</a>
+    <a href="loja.html">Loja</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">💪 Treinos</p>
+    <h1 class="section-title">Treino sob medida<br>ou preparação pro TAF.</h1>
+    <p class="section-sub">Escolha entre um treino personalizado no estilo PPL ou um plano progressivo focado no Teste de Aptidão Física.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="personalizado">Treino Personalizado</button>
+      <button class="tab-btn" data-tab="taf">Treino TAF</button>
+    </div>
+
+    <!-- ===================== TREINO PERSONALIZADO ===================== -->
+    <div class="tab-panel active" id="panel-personalizado">
+      <form id="form-treino" class="form-card reveal-up" novalidate>
+        <p class="eyebrow">Sobre você</p>
+        <div class="form-grid" style="margin-bottom: 30px;">
+          <div class="field">
+            <label for="tr-objetivo">Objetivo</label>
+            <select id="tr-objetivo" required>
+              <option value="hipertrofia">Hipertrofia (ganho de massa)</option>
+              <option value="forca">Força</option>
+              <option value="emagrecimento">Emagrecimento</option>
+              <option value="resistencia">Resistência muscular</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tr-dias">Dias disponíveis por semana</label>
+            <select id="tr-dias" required>
+              <option value="2">2 dias</option>
+              <option value="3" selected>3 dias</option>
+              <option value="4">4 dias</option>
+              <option value="5">5 dias</option>
+              <option value="6">6 dias</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tr-tempo">Tempo disponível por treino</label>
+            <select id="tr-tempo" required>
+              <option value="30">30 minutos</option>
+              <option value="45" selected>45 minutos</option>
+              <option value="60">60 minutos</option>
+              <option value="90">90 minutos</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="tr-experiencia">Experiência</label>
+            <select id="tr-experiencia" required>
+              <option value="iniciante">Iniciante (menos de 6 meses)</option>
+              <option value="intermediario" selected>Intermediário (6 meses a 2 anos)</option>
+              <option value="avancado">Avançado (mais de 2 anos)</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="eyebrow">Equipamentos disponíveis</p>
+        <div class="check-grid" style="margin-bottom: 30px;">
+          <div class="pill-option"><input type="checkbox" id="eq-academia" value="academia" checked><label for="eq-academia">🏋️ Academia completa</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-halteres" value="halteres"><label for="eq-halteres">🔩 Halteres</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-barraanilhas" value="barraanilhas"><label for="eq-barraanilhas">🏋️‍♂️ Barra com anilhas</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-elasticos" value="elasticos"><label for="eq-elasticos">➰ Super Band / elástico</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-corporal" value="corporal"><label for="eq-corporal">🤸 Peso corporal</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-barra" value="barra"><label for="eq-barra">🧗 Barra fixa</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-paralelas" value="paralelas"><label for="eq-paralelas">🤾 Paralelas</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-banco" value="banco"><label for="eq-banco">🪑 Banco</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-mochila" value="mochila"><label for="eq-mochila">🎒 Mochila com peso</label></div>
+          <div class="pill-option"><input type="checkbox" id="eq-corda" value="corda"><label for="eq-corda">🪢 Corda</label></div>
+        </div>
+        <p id="erro-equip" style="color:var(--c-taf); font-size:.88rem; display:none; margin-bottom:20px;">Selecione ao menos um equipamento.</p>
+
+        <button type="submit" class="btn btn-primary btn-block">GERAR MEU TREINO</button>
+      </form>
+
+      <div id="resultado-treino" class="result-wrap">
+        <p class="eyebrow">Seu plano</p>
+        <h2 class="section-title" id="tr-titulo-plano">Seu treino PPL</h2>
+        <p class="section-sub" id="tr-sub-plano"></p>
+        <div id="dias-treino"></div>
+      </div>
+    </div>
+
+    <!-- ===================== TREINO TAF ===================== -->
+    <div class="tab-panel" id="panel-taf">
+      <p class="eyebrow">Escolha seu nível</p>
+      <div class="taf-levels" id="taf-niveis">
+        <div class="taf-level-card" data-nivel="iniciante">
+          <span class="lvl-icon">🥉</span>
+          <h4>Iniciante</h4>
+          <p>Primeiro contato com o TAF. Foco em base e consistência.</p>
+        </div>
+        <div class="taf-level-card" data-nivel="intermediario">
+          <span class="lvl-icon">🥈</span>
+          <h4>Intermediário</h4>
+          <p>Já treina, quer evoluir tempo, distância e repetições.</p>
+        </div>
+        <div class="taf-level-card" data-nivel="avancado">
+          <span class="lvl-icon">🥇</span>
+          <h4>Avançado</h4>
+          <p>Perto da nota máxima, busca refinar cada detalhe.</p>
+        </div>
+      </div>
+
+      <form id="form-taf" class="form-card reveal-up" novalidate style="display:none;">
+        <p class="eyebrow">Seu desempenho atual</p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="taf-barras">Quantas barras fixas você consegue fazer?</label>
+            <input type="number" id="taf-barras" min="0" max="60" placeholder="Ex: 6" required>
+          </div>
+          <div class="field">
+            <label for="taf-50m">Tempo na corrida de 50 metros (segundos)</label>
+            <input type="number" id="taf-50m" min="4" max="30" step="0.1" placeholder="Ex: 8.5" required>
+          </div>
+          <div class="field">
+            <label for="taf-12min">Distância percorrida em 12 minutos (metros)</label>
+            <input type="number" id="taf-12min" min="800" max="4000" step="10" placeholder="Ex: 2200" required>
+          </div>
+          <div class="field">
+            <label for="taf-abdominais">Abdominais em 1 minuto</label>
+            <input type="number" id="taf-abdominais" min="0" max="100" placeholder="Ex: 35" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:24px;">GERAR PLANO TAF</button>
+      </form>
+
+      <div id="resultado-taf" class="result-wrap">
+        <p class="eyebrow">Plano progressivo — <span id="taf-res-nivel">—</span></p>
+        <h2 class="section-title">4 semanas até sua evolução</h2>
+        <p class="section-sub" id="taf-res-sub"></p>
+        <div id="taf-semanas"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">Shape<span class="dot">House</span></a>
+        <p>Dieta, treinos e preparação para o TAF em um só lugar. Seu shape começa aqui.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index.html">Início</a>
+          <a href="dieta.html">Dieta</a>
+          <a href="treino.html">Treinos</a>
+          <a href="loja.html">Loja</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 ShapeHouse. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="treino.js"></script>
+</body>
+</html>

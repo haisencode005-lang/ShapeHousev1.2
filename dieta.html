@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dieta — ShapeHouse</title>
+<meta name="description" content="Monte sua dieta personalizada com os alimentos que você já tem disponível.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">Shape<span class="dot">House</span></a>
+  <nav class="nav-links">
+    <a href="index.html">Início</a>
+    <a href="dieta.html">Dieta</a>
+    <a href="treino.html">Treinos</a>
+    <a href="loja.html">Loja</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">🍽 Dieta</p>
+    <h1 class="section-title">Monte sua dieta<br>com o que você tem.</h1>
+    <p class="section-sub">Preencha seus dados, escolha os alimentos disponíveis e receba um cardápio calculado com TMB, gasto calórico e macros.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="info-card reveal-up">
+      <p class="eyebrow">Sobre a dieta gerada</p>
+      <p>A dieta gerada pelo ShapeHouse é uma sugestão alimentar básica, criada a partir das informações fornecidas pelo usuário, como objetivo, características físicas, nível de atividade e alimentos disponíveis ou selecionados.</p>
+      <p>Ela foi desenvolvida para servir como um ponto de partida prático, ajudando você a organizar melhor sua alimentação dentro da sua realidade.</p>
+      <p>No entanto, esta ferramenta não substitui uma avaliação individualizada realizada por um nutricionista. Necessidades nutricionais podem variar de acordo com diversos fatores, e uma estratégia alimentar adequada deve considerar o contexto, as preferências, a rotina e as necessidades específicas de cada pessoa.</p>
+      <p>Use o resultado como uma referência geral, e não como uma prescrição nutricional.</p>
+    </div>
+
+    <form id="form-dieta" class="form-card reveal-up" novalidate>
+
+      <p class="eyebrow">Seus dados</p>
+      <div class="form-grid" style="margin-bottom:34px;">
+        <div class="field full">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" required>
+        </div>
+
+        <div class="field">
+          <label for="sexo">Sexo</label>
+          <select id="sexo" name="sexo" required>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="idade">Idade</label>
+          <input type="number" id="idade" name="idade" min="14" max="90" placeholder="Ex: 24" required>
+        </div>
+
+        <div class="field">
+          <label for="peso">Peso (kg)</label>
+          <input type="number" id="peso" name="peso" min="30" max="250" step="0.1" placeholder="Ex: 72" required>
+        </div>
+
+        <div class="field">
+          <label for="altura">Altura (cm)</label>
+          <input type="number" id="altura" name="altura" min="120" max="230" placeholder="Ex: 175" required>
+        </div>
+
+        <div class="field">
+          <label for="objetivo">Objetivo</label>
+          <select id="objetivo" name="objetivo" required>
+            <option value="emagrecer">Emagrecer</option>
+            <option value="manter">Manter o peso</option>
+            <option value="ganhar">Ganhar massa muscular</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="atividade">Nível de atividade</label>
+          <select id="atividade" name="atividade" required>
+            <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+            <option value="1.375">Leve (1 a 3x por semana)</option>
+            <option value="1.55" selected>Moderado (3 a 5x por semana)</option>
+            <option value="1.725">Intenso (6 a 7x por semana)</option>
+            <option value="1.9">Muito intenso (2x por dia / físico)</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="preferencia">Preferências alimentares</label>
+          <select id="preferencia" name="preferencia">
+            <option value="sem-restricao">Sem restrição</option>
+            <option value="sem-carne-vermelha">Sem carne vermelha</option>
+            <option value="vegetariano">Vegetariano (sem carnes)</option>
+            <option value="sem-lactose">Sem lactose</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="eyebrow">Escolha os alimentos que deseja utilizar</p>
+      <p class="section-sub" style="margin-bottom:26px;">Selecione quantos quiser. Se escolher poucos, nós distribuímos eles ao longo do dia.</p>
+
+      <div class="food-group">
+        <h4>Proteínas</h4>
+        <div class="check-grid" data-group="proteinas">
+          <div class="pill-option"><input type="checkbox" id="f-frango" value="frango"><label for="f-frango">🍗 Frango</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-carne" value="carne"><label for="f-carne">🥩 Carne bovina</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-ovos" value="ovos"><label for="f-ovos">🥚 Ovos</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-peixe" value="peixe"><label for="f-peixe">🐟 Peixe</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-atum" value="atum"><label for="f-atum">🐠 Atum</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-queijo" value="queijo"><label for="f-queijo">🧀 Queijo</label></div>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h4>Carboidratos</h4>
+        <div class="check-grid" data-group="carboidratos">
+          <div class="pill-option"><input type="checkbox" id="f-arroz" value="arroz"><label for="f-arroz">🍚 Arroz</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-feijao" value="feijao"><label for="f-feijao">🫘 Feijão</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-macarrao" value="macarrao"><label for="f-macarrao">🍝 Macarrão</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-batata" value="batata"><label for="f-batata">🍠 Batata-doce</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-mandioca" value="mandioca"><label for="f-mandioca">🥔 Mandioca</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-aveia" value="aveia"><label for="f-aveia">🌾 Aveia</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-pao" value="pao"><label for="f-pao">🥖 Pão francês</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-cuscuz" value="cuscuz"><label for="f-cuscuz">🌽 Cuscuz</label></div>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h4>Frutas</h4>
+        <div class="check-grid" data-group="frutas">
+          <div class="pill-option"><input type="checkbox" id="f-banana" value="banana"><label for="f-banana">🍌 Banana</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-maca" value="maca"><label for="f-maca">🍎 Maçã</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-mamao" value="mamao"><label for="f-mamao">🫐 Mamão</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-laranja" value="laranja"><label for="f-laranja">🍊 Laranja</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-melancia" value="melancia"><label for="f-melancia">🍉 Melancia</label></div>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h4>Laticínios</h4>
+        <div class="check-grid" data-group="laticinios">
+          <div class="pill-option"><input type="checkbox" id="f-leite" value="leite"><label for="f-leite">🥛 Leite</label></div>
+          <div class="pill-option"><input type="checkbox" id="f-iogurte" value="iogurte"><label for="f-iogurte">🍦 Iogurte</label></div>
+        </div>
+      </div>
+
+      <p id="erro-alimentos" style="color:var(--c-taf); font-size:.88rem; display:none; margin:10px 0 0;">Selecione ao menos um alimento em qualquer categoria.</p>
+
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:30px;">GERAR MINHA DIETA</button>
+    </form>
+
+    <!-- ===================== RESULTADO ===================== -->
+    <div id="resultado" class="result-wrap">
+      <p class="eyebrow">Resultado para <span id="res-nome">você</span></p>
+      <h2 class="section-title">Sua base alimentar estimada</h2>
+      <p class="result-disclaimer">Importante: este resultado é uma estimativa e uma sugestão geral. Para uma orientação nutricional individualizada, especialmente em situações específicas de saúde, procure um nutricionista.</p>
+
+      <div class="scoreboard">
+        <div class="score-cell"><b id="res-tmb">—</b><span>TMB (kcal)</span></div>
+        <div class="score-cell"><b id="res-get">—</b><span>GET (kcal)</span></div>
+        <div class="score-cell"><b id="res-meta">—</b><span>Meta diária (kcal)</span></div>
+        <div class="score-cell p"><b id="res-prot">—</b><span>Proteínas (g)</span></div>
+      </div>
+      <div class="scoreboard" style="margin-top:-20px;">
+        <div class="score-cell c"><b id="res-carb">—</b><span>Carboidratos (g)</span></div>
+        <div class="score-cell g"><b id="res-gord">—</b><span>Gorduras (g)</span></div>
+        <div class="score-cell"><b id="res-refeicoes">—</b><span>Refeições / dia</span></div>
+        <div class="score-cell"><b id="res-agua">—</b><span>Água sugerida (ml)</span></div>
+      </div>
+
+      <div id="lista-refeicoes" style="margin-top:40px;"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">Shape<span class="dot">House</span></a>
+        <p>Dieta, treinos e preparação para o TAF em um só lugar. Seu shape começa aqui.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index.html">Início</a>
+          <a href="dieta.html">Dieta</a>
+          <a href="treino.html">Treinos</a>
+          <a href="loja.html">Loja</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 ShapeHouse. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="dieta.js"></script>
+</body>
+</html>
